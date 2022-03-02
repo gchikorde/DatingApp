@@ -24,10 +24,11 @@ model: any = {}
     this.accountService.login(this.model).subscribe(response =>{
       //console.log(response);
       this.router.navigateByUrl('/members');
-    }, error =>{
-      console.log(error);
-      this.toastrService.error(error.error);
     })
+    // , error =>{
+    //   console.log(error);
+    //   this.toastrService.error(error.error);
+    // })
   }
 
   logout(){
