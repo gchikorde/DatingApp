@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using API.Data;
 using API.DTOs;
 using API.Entities;
+using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
+    [ServiceFilter(typeof(LogUserActivity))]
     [ApiController]
     [Route("api/[controller]")]
     public class AccountController : ControllerBase
@@ -48,7 +50,8 @@ namespace API.Controllers
             {
                 Username=user.UserName,
                 Token= tokenService.CreateToken(user),
-                KnownAs=user.KnownAs
+                KnownAs=user.KnownAs,
+                Gender=user.Gender
             };
         }
 
@@ -73,7 +76,8 @@ namespace API.Controllers
                 Username=user.UserName,
                 Token= tokenService.CreateToken(user),
                 PhotoUrl= user.Photos.FirstOrDefault(usr=>usr.IsMain)?.Url,
-                KnownAs=user.KnownAs
+                KnownAs=user.KnownAs,
+                Gender=user.Gender
             };
 
         }
