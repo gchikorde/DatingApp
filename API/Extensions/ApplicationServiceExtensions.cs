@@ -20,6 +20,7 @@ namespace API.Extensions
             services.Configure<CloudinarySettings>(config.GetRequiredSection("CloudinarySettings"));
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IPhotoService, PhotoService>();
+            services.AddScoped<ILikesRepository, LikesRepository>();
             services.AddScoped<IUserRepository, UserRepositiry>();
             services.AddScoped<LogUserActivity>();
             services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
